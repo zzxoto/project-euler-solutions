@@ -1,0 +1,20 @@
+How many digits required to store number 'n', where n >= 0 ?
+============================================================
+n -> 3,  digit  -> 1
+n -> 10, digit  -> 2
+n -> 99, digit  -> 2
+n -> 100, digit -> 3
+
+This equation would satisfy:
+No. of digits required to store a number 'n' = floor(1 + log_base_10(n))
+
+
+How many digits required to store number 2 raised to n, where n >= 0
+=====================================================================
+From above: 
+   floor(1 + log_base_10(2 ** n))
+=> floor(1 + n * log_base_10(2))
+
+Since Math.log in JS is actually natural log, the above becomes
+
+=>  floor(1 + n * ln(2)/ln(10))

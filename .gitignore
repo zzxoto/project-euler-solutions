@@ -1,0 +1,6 @@
+#vim relics
+**/*.sw?
+
+## VS Code debugger config files
+/.vscode
+/C/build/**
