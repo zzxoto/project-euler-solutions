@@ -8,7 +8,6 @@ n -> 100, digit -> 3
 This equation would satisfy:
 No. of digits required to store a number 'n' = floor(1 + log_base_10(n))
 
-
 How many digits required to store number 2 raised to n, where n >= 0
 =====================================================================
 From above: 
@@ -18,3 +17,87 @@ From above:
 Since Math.log in JS is actually natural log, the above becomes
 
 =>  floor(1 + n * ln(2)/ln(10))
+
+Not so obvious function that generates odd number
+=================================================
+f(x)  = root(1 + square(4x) + 4x) - 2, for x >= 1
+f(1)  = 1
+f(2)  = 3
+..
+f(10) = 19 
+..
+
+How many rows in a triangle of numbers
+======================================
+Triangle of numbers is of the form:
+              a1
+            a2   a3
+          a4   a5   a6
+
+1 row  -> 1 elements
+2 row  -> 1 + 2 elements
+3 row  -> 1 + 2 + 3 elements
+n row  -> 1 + 2 + .. + (n - 1) + n elements
+
+i.e. for n rows there are n(n + 1)/2 elements
+
+So, given K elements in a triangle, how many rows are there,
+Let n be no. of rows then:
+   K  = n(n + 1)/2
+=> 2K = n^2 + n
+=> n^2 + n - 2k = 0
+Which is of the form Ax^2 + Bx + C = 0. Thus the solutions of the quadratic equation are:
+
+=> n = (-1 +- root(1 + 8K)) / 2
+=> n = (-1 - root(1 + 8K)) / 2 OR (-1 + root(1 + 8K)) / 2
+We are only interested in the latter one, because that yields positive value for K >= 1
+
+thus, for K elements there are (-1 + root(1 + 8K)) / 2 rows.
+
+Graph Representation
+====================
+MIT Algorithms 2011 Lecture
+
+In abstract, Graph G is parameterized by V, E, W
+  where V = set of vertices
+        E = set of pair of vertices i.e. edges 
+        W = Function (or other means) for mapping Edge to weight. 
+
+Note that 'W' is only considered for some kind of graph problems. Like shortest paths.
+
+Adjacency List
+
+Array 'Adj' of length equal to size of V
+Index of the element in the array, represents the vertex (Hash vertices in that way)
+Each element at index 'i' in array is pointer to list, which is the set of neighboring vertices from vertex 'i'
+
+Say, V = {a, b, c}
+     E = { (b, a), (b, c), (a, c), (c, b) }
+
+a -> { c }        Index(a) = 0      [0] -> [2]
+b -> { a, c }  => Index(b) = 1  =>  [1] -> [0, 2]
+c -> { b }        Index(c) = 2      [2] -> [1]
+
+
+Succintly, adjacently list is:
+Adj[u] = { v member of V | (u, v) member of E }
+
+DFS
+===
+From MIT Algorithms 2011 Lecture
+
+parent = {}
+
+//visit all the reachable nodes from 's'
+DFS_Visit(Adj, s):
+  for v in Adj[s]:
+    if v not in parent:
+      parent[v] = s
+      DFS_Visit(Adj, v)
+
+//visit all the reachable nodes from set of nodes 'V'
+DFS(Adj, V):
+  for S in V:
+    if s not in parent:
+      parent[s] = None
+      DFS_Visit(Adj, s)
