@@ -13,6 +13,9 @@ typedef long long int          i64;
 typedef long long unsigned int u64;
 typedef int                    i32;
 typedef unsigned int           u32;
+typedef double                 f64;
+typedef float                  f32;
+typedef unsigned char          uchar;
 
 #define internal static
 #define I32_MAX  INT_MAX

@@ -13,7 +13,7 @@
 //
 //Find the maximum total from top to bottom of the triangle below:
 
-i32 main(i32 argc, i32 **argv)
+i32 main(i32 argc, char **argv)
 {
   i32 triangle[] = {
     75
