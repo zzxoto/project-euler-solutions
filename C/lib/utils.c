@@ -1,5 +1,6 @@
 #include "common.h"
 #include "utils.h"
+#include <errno.h>
 
 void u_printList_i32(i32 *list, i32 len)
 {
@@ -17,3 +18,9 @@ void u_printList_i32(i32 *list, i32 len)
   }
   printf("]\n");
 }
+
+void u_merror(char *s)
+{
+  printf("Error: %s (%d): %s\n", s, errno, strerror(errno));
+}
+

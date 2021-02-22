@@ -1,3 +1,5 @@
+#include "common.h"
+
 typedef struct g_Graph g_Graph;
 
 typedef void(* g_DFSCallback)(i32 u, void *bag);
